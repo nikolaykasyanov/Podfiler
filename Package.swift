@@ -27,7 +27,7 @@ let package = Package(
         .target(
             name: "PodfilerKit",
             dependencies: [
-                
+                .product(name: "SwiftToolsSupport-auto", package: "swift-tools-support-core"),
             ]
         ),
     ]
