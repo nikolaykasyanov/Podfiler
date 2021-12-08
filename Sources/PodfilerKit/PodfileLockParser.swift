@@ -54,8 +54,8 @@ private enum Pattern {
     // \n\s{4}- ([+\w\/-]+)( \(([=\s\d.>,~<]+)\))?
     static let podDependency = "\\n\\s{4}- \(podName)( \\((\(constraint))\\))?"
     
-    // \s{2}([+\w\/-]+):\n(.*\n)?\s{4}:(path|git): ([-.\w:\/@]+)
-    static let externalSource = "\\s{2}\(podName):\\n(.*\\n)?\\s{4}:(path|git|http): ([-.\\w:\\/@]+)"
+    // \s{2}([+\w\/-]+):\n(.*\n)?\s{4}:(path|git): ([-.\w:\/@~]+)
+    static let externalSource = "\\s{2}\(podName):\\n(.*\\n)?\\s{4}:(path|git|http): ([-.\\w:\\/@~]+)"
     
     // \s{2}<name>:\n(.*\n)?\s{4}:(commit|tag): ([\w.-]+)
     static func checkoutOption(for name: String) -> String {
