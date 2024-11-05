@@ -32,7 +32,7 @@ class PodfileLockParserSpec: QuickSpec {
             expect(sut[2]) == PodLock(
                 name: "Reachability",
                 checksum: "b14c20321fa00f7f4600d8c9856fc57e71ef2ffe",
-                version: try XCTUnwrap(Version(string: "3.1.0")),
+                version: try XCTUnwrap(Version(string: "3.1.0-FOO-SNAPSHOT")),
                 source: .path("Reachability")
             )
         }
@@ -47,7 +47,7 @@ PODS:
     - PodTest/subspec_2 (= 1.0.0)
   - PodTest/subspec_1 (1.0.0)
   - PodTest/subspec_2 (1.0.0)
-  - Reachability (3.1.0)
+  - Reachability (3.1.0-FOO-SNAPSHOT)
 
 DEPENDENCIES:
   - AFNetworking

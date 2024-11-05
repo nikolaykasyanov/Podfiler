@@ -45,10 +45,8 @@ public class PodfileLockParser {
 private enum Pattern {
     // ([+\w\/-]+)
     private static let podName = "([+\\w\\/-]+)"
-    // (\d+(.\d+(.\d+(-[\w\d.]+)?)?)?)
-    private static let semVer = "(\\d+(.\\d+(.\\d+(-[\\w\\d.]+)?)?)?)"
-    // \s{2}- ([+\w\/-]+) \((\d+(.\d+(.\d+(-[\w\d.]+)?)?)?)\)(:(\n\s{4}- ([+\w\/-]+)( \(([=\s\d.>,~<]+)\))?)+)?
-    static let podTree = "\\s{2}- \(podName) \\(\(semVer)\\)(:(\(podDependency))+)?"
+    // \s{2}- ([+\w\/-]+) \(([^\)]+)\)(:(\n\s{4}- ([+\w\/-]+)( \(([=\s\d.>,~<]+)\))?)+)?
+    static let podTree = "\\s{2}- \(podName) \\(([^\\)]+)\\)(:(\(podDependency))+)?"
     // [=\s\d.>,~<]+
     private static let constraint = "[=\\s\\d.>,~<]+"
     // \n\s{4}- ([+\w\/-]+)( \(([=\s\d.>,~<]+)\))?
