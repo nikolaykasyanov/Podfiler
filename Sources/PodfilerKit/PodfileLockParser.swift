@@ -46,7 +46,7 @@ private enum Pattern {
     // ([+\w\/-]+)
     private static let podName = "([+\\w\\/-]+)"
     // \s{2}- ([+\w\/-]+) \(([^\)]+)\)(:(\n\s{4}- ([+\w\/-]+)( \(([=\s\d.>,~<]+)\))?)+)?
-    static let podTree = "\\s{2}- \(podName) \\(([^\\)]+)\\)(:(\(podDependency))+)?"
+    static let podTree = "^\\s{2}- \(podName) \\(([^\\)]+)\\)(:(\(podDependency))+)?"
     // [=\s\d.>,~<]+
     private static let constraint = "[=\\s\\d.>,~<]+"
     // \n\s{4}- ([+\w\/-]+)( \(([=\s\d.>,~<]+)\))?
@@ -79,7 +79,7 @@ private struct TransitiveDependency {
 }
 
 private func parse(pods: String) throws -> [Pod] {
-    try pods.match(pattern: Pattern.podTree) { pod in
+    try pods.match(pattern: Pattern.podTree, anchorsMatchLines: true) { pod in
         let name = try pods.value(from: pod, at: 1)
         let versionString = try pods.value(from: pod, at: 2)
         let transitives: [TransitiveDependency]

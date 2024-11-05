@@ -16,7 +16,7 @@ class PodfileLockParserSpec: QuickSpec {
         }
 
         it("parses") {
-            expect(sut).to(haveCount(3))
+            expect(sut).to(haveCount(4))
             expect(sut[0]) == PodLock(
                 name: "AFNetworking",
                 checksum: "cf8e418e16f0c9c7e5c3150d019a3c679d015018",
@@ -35,6 +35,12 @@ class PodfileLockParserSpec: QuickSpec {
                 version: try XCTUnwrap(Version(string: "3.1.0-FOO-SNAPSHOT")),
                 source: .path("Reachability")
             )
+            expect(sut[3]) == PodLock(
+                name: "RxSwift",
+                checksum: "4e28be97cbcfeee614af26d83415febbf2bf6f45",
+                version: try XCTUnwrap(Version(string: "6.8.0")),
+                source: .specRepo("trunk")
+            )
         }
     }
 }
@@ -48,6 +54,8 @@ PODS:
   - PodTest/subspec_1 (1.0.0)
   - PodTest/subspec_2 (1.0.0)
   - Reachability (3.1.0-FOO-SNAPSHOT)
+    - RxSwift (~> 6.0)
+  - RxSwift (6.8.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -57,6 +65,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - RxSwift
 
 EXTERNAL SOURCES:
   PodTest:
@@ -73,6 +82,7 @@ SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   PodTest: 671615d047bc2a9e8c271feb99b749411b66aed2
   Reachability: b14c20321fa00f7f4600d8c9856fc57e71ef2ffe
+  RxSwift: 4e28be97cbcfeee614af26d83415febbf2bf6f45
 
 PODFILE CHECKSUM: f371e6714eb9c3c0225b554152a3238a1d5d5391
 
