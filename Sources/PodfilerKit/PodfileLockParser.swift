@@ -95,7 +95,7 @@ private func parse(pods: String) throws -> [Pod] {
             transitives = []
         }
         guard let version = Version(string: versionString) else {
-            throw "Couldn't parse the version string '\(versionString)'"
+            throw "Couldn't parse the version string '\(versionString)' of the pod '\(name)'"
         }
         return Pod(name: name, version: version, dependencies: transitives)
     }
